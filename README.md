@@ -1,6 +1,6 @@
-# Digital-Signal-Processing--FIR-BAND-STOP-FILTER-DESIGN
+# Digital-Signal-Processing--FIR-BAND-PASS-FILTER-DESIGN
 ## AIM:
-To generate design of Band Stop FIR digital filter using Window.
+To generate design of Band Pass FIR digital filter using Window.
 ## Software Required:
 MAT LAB R2012.
 ## Algorithm:
@@ -19,7 +19,30 @@ Step 5: Plot the magnitude spectrum with x-label and y-label with suitable title
 Step 6: Terminate the program.
 
 ## PROGRAM: 
-
+~~~
+clc; % clear screen
+clear all; % clear screen
+close all; % close all figure windows
+wc1=input('enter the value of cut off frequency wc1'); 
+wc2=input('enter the value of cut off frequency wc2'); 
+N=input('enter the value of filter'); 
+alpha=(N-1)/2; 
+eps=0.001; 
+%Band Pass Filter Coefficient
+n=0:1:N-1; 
+hd=(sin(wc1*(n-alpha+eps))-sin(wc2*(n-alpha+eps)))./((n-alpha+eps)*pi)
+%Bartlett Window Sequence 
+n=0:1:N-1; 
+wh = 1 - abs(n - alpha) / alpha;
+hn=hd.*wh
+% Plot the Band Pass Filter with Hanning Window Technique
+w=0:0.01:pi; 
+h=freqz(hn,1,w);
+plot(w/pi,abs(h),'blue');
+~~~
 ## OUTPUT:
 
+<img width="692" height="613" alt="Screenshot 2025-11-26 001243" src="https://github.com/user-attachments/assets/a5bcb5b0-a053-4a9b-a93e-ed3330b6a2ca" />
+
 ## RESULT:
+![WhatsApp Image 2025-11-27 at 22 14 51_dd3ddd6d](https://github.com/user-attachments/assets/68462a66-628f-4c7b-88e3-a89df79f7c61)
